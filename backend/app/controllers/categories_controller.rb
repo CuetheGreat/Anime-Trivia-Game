@@ -7,7 +7,7 @@ class CategoriesController < ApplicationController
   def create
     cat = Category.new(category_params)
     if cat.save
-      render json: CategorySerializer.new(cat), status: :accepted
+      render json: cat, serializer: CategorySerializer, status: :accepted
     else
       render json: { message: 'An Error Occurred', errors: cat.errors }, status: :unprocessable_entity
     end
@@ -26,7 +26,7 @@ class CategoriesController < ApplicationController
     cat = Category.find_by(slug: params[:id])
     name = cat.name
     cat.destroy
-    render json: { message: `#{name} has been successfullly deleted.` }, status: :accepted
+    render json: { message: "#{name} has been successfullly deleted.", category: nil }, status: :accepted
   end
 end
 
