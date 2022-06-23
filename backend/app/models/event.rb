@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Event
   # Includes for mongo functions
   include Mongoid::Document
@@ -18,6 +20,6 @@ class Event
   # Public functions
   def self.random
     random_offset = rand(count)
-    rand_event = offset(random_offset).first
+    offset(random_offset).first
   end
 end
