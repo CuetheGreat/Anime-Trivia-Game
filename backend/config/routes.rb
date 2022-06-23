@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  scope 'game' do
+    get 'new_game', to: 'game#new_game'
+    get 'draw_card', to: 'game#draw_card'
+    get 'played_cards', to: 'game#played_cards'
+  end
   scope 'api/v1' do
     resources :events
     resources :categories
